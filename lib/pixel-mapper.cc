@@ -38,14 +38,6 @@ public:
     }
     char *errpos;
     const int angle = strtol(param, &errpos, 10);
-    if (*errpos != '\0') {
-      fprintf(stderr, "Invalid rotate parameter '%s'\n", param);
-      return false;
-    }
-    if (angle % 90 != 0) {
-      fprintf(stderr, "Rotation needs to be multiple of 90 degrees\n");
-      return false;
-    }
     angle_ = (angle + 360) % 360;
     return true;
   }
@@ -53,7 +45,19 @@ public:
   virtual bool GetSizeMapping(int matrix_width, int matrix_height,
                               int *visible_width, int *visible_height)
     const {
-    if (angle_ % 180 == 0) {
+    if(angle_ == 1) {
+      *visible_width = 96;
+      *visible_height = 64;
+    } else if(angle_ == 2) {
+      *visible_width = 96;
+      *visible_height = 64;
+    } else if(angle_ == 3) {
+      *visible_width = 96;
+      *visible_height = 64;
+    } else if(angle_ == 4) {
+      *visible_width = 96;
+      *visible_height = 64;
+    } else if (angle_ % 180 == 0) {
       *visible_width = matrix_width;
       *visible_height = matrix_height;
     } else {
@@ -67,6 +71,65 @@ public:
                                   int x, int y,
                                   int *matrix_x, int *matrix_y) const {
     switch (angle_) {
+      case 1:
+                        if(x < 64) {
+                            if(y < 32) {
+                                *matrix_x = x;
+                                *matrix_y = y;
+                            } else {
+                                *matrix_x = 191-x;
+                                *matrix_y = 63-y;
+                            }
+                        } else {
+                            *matrix_x = 64+y;
+                            *matrix_y = 95-x;
+                        }
+                        break;
+                    case 2:
+                        if(x >= 32) {
+                            if(y >= 32) {
+                                *matrix_x = 95-x;
+                                *matrix_y = 63-y;
+                            } else {
+                                *matrix_x = 96+x;
+                                *matrix_y = y;
+                            }
+                        } else {
+                            *matrix_x = 127-y;
+                            *matrix_y = x;
+                        }
+                        break;
+                    case 3:
+                        if(x < 64) {
+                            if(y < 32) {
+                                *matrix_x = 63-x;
+                                *matrix_y = 31-y;
+                            } else {
+                                *matrix_x = 128+x;
+                                *matrix_y = 63-y;
+                            }
+                        } else {
+                            *matrix_x = 64+y;
+                            *matrix_y = 63-x;
+                        }
+                        break;
+                    case 4:
+                        if(x >= 32) {
+                            if(y >= 32) {
+                                // 1
+                                *matrix_x = 32+x;
+                                *matrix_y = 32+y;
+                            } else {
+                                // 3
+                                *matrix_x = 159-x;
+                                *matrix_y = 31-y;
+                            }
+                        } else {
+                            // 2
+                            *matrix_x = 96+y;
+                            *matrix_y = 63-x;
+                        }
+                        break;   
     case 0:
       *matrix_x = x;
       *matrix_y = y;
