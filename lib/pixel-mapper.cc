@@ -46,12 +46,6 @@ namespace rgb_matrix {
                                         int *visible_width, int *visible_height)
             const {
                 
-                if(angle_ == 37) {
-                    fprintf(stderr,"pixelmapper: 37\n");
-                    *visible_width = 96;
-                    *visible_height = 64;
-                }
-                
                 if (angle_ == 38) {
                     fprintf(stderr,"pixelmapper: 38\n");
                     *visible_width = 96;
@@ -64,45 +58,24 @@ namespace rgb_matrix {
                                             int x, int y,
                                             int *matrix_x, int *matrix_y) const {
                 
-                if(angle_ == 37) {
-                    if(x >= 32) {
-                        if(y < 32) {
-                            // x from 32-95
-                            // y from 0-31
-                            *matrix_x = 95-x; // matrix_x from 0-63
-                            *matrix_y = 31-y;
-                        } else {
-                            // x from 32-95
-                            // y from 32-63
-                            *matrix_x = 96+x; // matrix_x from 128-191
-                            *matrix_y = y-32;
-                        }
-                    } else {
-                        // x from 0-31
-                        // y from 0-63
-                        *matrix_x = 64+y; // matrix_x from 64-127
-                        *matrix_y = 31-x;
-                    }
-                }
-                
                 if(angle_ == 38){
                     if(x>=0 && x<32) {
                         // x from 0-31
                         // y from 0-63
                         *matrix_x = 128+y; // 128-191
-                        *matrix_y = x; // 0-31
+                        *matrix_y = 31-x; // 0-31
                     }
                     if(x>=32 && x<64) {
                         // x from 32-63
                         // y from 0-63
                         *matrix_x = 64+y; // 64-127
-                        *matrix_y = x-32; // 0-31
+                        *matrix_y = 31-(x-32); // 0-31
                     }
                     if(x>=64&&x<96){
                         // x from 64-95
                         // y from 0-63
                         *matrix_x = y; // 0-63
-                        *matrix_y = x-64; //0-31
+                        *matrix_y = 31-(x-64); //0-31
                     }
                 }
             }
