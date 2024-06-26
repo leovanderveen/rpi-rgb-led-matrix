@@ -3059,7 +3059,7 @@ static PyTypeObject __pyx_type_9rgbmatrix_8graphics_Color = {
   sizeof(struct __pyx_obj_9rgbmatrix_8graphics_Color), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_9rgbmatrix_8graphics_Color, /*tp_dealloc*/
-  0, /*tp_print*/
+  0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
   #if PY_MAJOR_VERSION < 3
@@ -3165,7 +3165,7 @@ static PyTypeObject __pyx_type_9rgbmatrix_8graphics_Font = {
   sizeof(struct __pyx_obj_9rgbmatrix_8graphics_Font), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_9rgbmatrix_8graphics_Font, /*tp_dealloc*/
-  0, /*tp_print*/
+  0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
   #if PY_MAJOR_VERSION < 3
@@ -3439,7 +3439,7 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   if (PyType_Ready(&__pyx_type_9rgbmatrix_8graphics_Color) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
-  __pyx_type_9rgbmatrix_8graphics_Color.tp_print = 0;
+  __pyx_type_9rgbmatrix_8graphics_Color.tp_vectorcall_offset = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9rgbmatrix_8graphics_Color.tp_dictoffset && __pyx_type_9rgbmatrix_8graphics_Color.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9rgbmatrix_8graphics_Color.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
@@ -3447,7 +3447,7 @@ static int __Pyx_modinit_type_init_code(void) {
   if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9rgbmatrix_8graphics_Color) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
   __pyx_ptype_9rgbmatrix_8graphics_Color = &__pyx_type_9rgbmatrix_8graphics_Color;
   if (PyType_Ready(&__pyx_type_9rgbmatrix_8graphics_Font) < 0) __PYX_ERR(1, 26, __pyx_L1_error)
-  __pyx_type_9rgbmatrix_8graphics_Font.tp_print = 0;
+  __pyx_type_9rgbmatrix_8graphics_Font.tp_vectorcall_offset = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9rgbmatrix_8graphics_Font.tp_dictoffset && __pyx_type_9rgbmatrix_8graphics_Font.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9rgbmatrix_8graphics_Font.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
